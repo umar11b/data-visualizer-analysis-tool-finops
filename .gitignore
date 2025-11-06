@@ -20,6 +20,9 @@ wheels/
 .installed.cfg
 *.egg
 
+# Requirements
+requirements.txt
+
 # Virtual Environment
 venv/
 env/
