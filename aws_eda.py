@@ -1,3 +1,13 @@
+"""
+AWS Cloud Economics EDA Dashboard
+Author: Umar Zaman
+Description: Comprehensive cost and performance analysis dashboard for AWS EC2 and S3 resources
+
+Acknowledgments:
+This project was developed with assistance from Cursor AI, which provided code suggestions,
+debugging support, and implementation guidance throughout the development process.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
