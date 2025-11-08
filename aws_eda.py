@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 import os
+from pathlib import Path
 from io import StringIO
 
 sns.set_style("darkgrid")
@@ -80,7 +81,11 @@ st.markdown("""
 st.markdown('<h1 class="main-header">☁️ AWS Cloud Economics Analyzer</h1>', unsafe_allow_html=True)
 st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #888;">Comprehensive Cost & Performance Analysis Dashboard</p>', unsafe_allow_html=True)
 
-if not os.path.exists("aws_resources_compute.csv") or not os.path.exists("aws_resources_S3.csv"):
+BASE_DIR = Path(__file__).resolve().parent
+compute_csv_path = BASE_DIR / "aws_resources_compute.csv"
+s3_csv_path = BASE_DIR / "aws_resources_S3.csv"
+
+if not compute_csv_path.exists() or not s3_csv_path.exists():
     st.error("❌ CSV files not found!")
     st.info("""
     **Please ensure the following files are in the same folder as this script:**
@@ -100,8 +105,8 @@ if not os.path.exists("aws_resources_compute.csv") or not os.path.exists("aws_re
     else:
         st.stop()
 else:
-    ec2_df = pd.read_csv("aws_resources_compute.csv")
-    s3_df = pd.read_csv("aws_resources_S3.csv")
+    ec2_df = pd.read_csv(compute_csv_path)
+    s3_df = pd.read_csv(s3_csv_path)
     st.success("✅ CSV files loaded from local directory!")
 
 with st.sidebar:
